@@ -17,7 +17,6 @@ var sequelize = new Sequelize(
   }
 );
 
-
 let Employee = sequelize.define("Employee", {
   employeeNum: {
     type: Sequelize.INTEGER,

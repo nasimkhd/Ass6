@@ -1,7 +1,7 @@
 let multer = require("multer");
 let data_service = require("./data-service");
 let fs = require("fs");
-let handle_bars = require("express-handlebars");
+let exphbs = require("express-handlebars");
 let auth = require("./data-service-auth.js");
 let sessions = require("client-sessions");
 let express = require("express");
@@ -44,7 +44,7 @@ app.use(function (req, res, next) {
 
 app.engine(
   ".hbs",
-  handle_bars({
+  exphbs({
     extname: ".hbs",
     defaultLayout: "main",
     helpers: {
@@ -68,14 +68,10 @@ app.engine(
           return options.fn(this);
         }
       },
-
-      // increment number passed in by 1
-      inc: function (value) {
-        return parseInt(value + 1);
-      },
     },
   })
 );
+
 app.set("view engine", ".hbs");
 app.use(express.static("public"));
 const upload = multer({ storage: storage });
