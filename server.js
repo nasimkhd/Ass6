@@ -9,7 +9,7 @@ let path = require("path");
 
 let app = express();
 
-let HTTP_PORT = process.env.PORT || 8080;
+let HTTP_PORT = process.env.PORT || 30001;
 
 const storage = multer.diskStorage({
   destination: "./public/images/uploaded/",
@@ -44,7 +44,7 @@ app.use(function (req, res, next) {
 
 app.engine(
   ".hbs",
-  handle_bars.engine({
+  handle_bars({
     extname: ".hbs",
     defaultLayout: "main",
     helpers: {
